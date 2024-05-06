@@ -13,12 +13,28 @@ namespace konferencia_console
         private int[,] ertekelesek_;
         public Eloadoterem(int sor_, int hely_)
         {
-            this.sor_ = sor_;
-            this.hely_ = hely_;
+            this.Sor_ = sor_;
+            this.Hely_ = hely_;
 
             Ertekelesek = new int[sor_, hely_];
         }
 
         public int[,] Ertekelesek { get => ertekelesek_; set => ertekelesek_ = value; }
+        public int Sor_ { get => sor_; set => sor_ = value; }
+        public int Hely_ { get => hely_; set => hely_ = value; }
+
+        public override string ToString()
+        {
+            string result = "";
+            for (int i = 0; i < ertekelesek_.GetLength(0); i++)
+            {
+                for (int j = 0; j < ertekelesek_.GetLength(1); j++)
+                {
+                    result += ertekelesek_[i,j] + " ";
+                }
+                result += "\n";
+            }
+            return result;
+        }
     }
 }

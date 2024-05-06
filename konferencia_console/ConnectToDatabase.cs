@@ -9,12 +9,14 @@ namespace konferencia_console
 {
     internal class ConnectToDatabase
     {
-        private string sqlStatement, sqlStatement2;
+        private string sqlStatement;
         MySqlConnection dbconn;
         MySqlCommand command;
-        MySqlDataReader reader, reader2;
+        MySqlDataReader reader;
+        List<Konferencia> konferenciak;
         public ConnectToDatabase()
         {
+            konferenciak = new List<Konferencia>();
             kapcsolat();
         }
 
@@ -31,7 +33,6 @@ namespace konferencia_console
 
         public List<Konferencia> SelectKonferenciak()
         {
-            List<Konferencia> konferenciak = new List<Konferencia>();
             try
             {
                 dbconn.Open();
@@ -41,42 +42,59 @@ namespace konferencia_console
                 command.Connection = dbconn;
                 command.CommandText = sqlStatement;
 
-                int id, sor, szek;
-                string cim;
-
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    id = reader.GetInt32(0);
-                    cim = reader.GetString(1);
-                    sor = reader.GetInt32(2);
-                    szek = reader.GetInt32(3);
-                    sqlStatement2 = $"SELECT sor, szek, ertekeles FROM ertekelesek " +
-                        $"WHERE eloadasid = {id} ORDER BY sor, szek;";
-                    Eloadoterem terem = new Eloadoterem(sor, szek);
-                    MySqlCommand command2 = new MySqlCommand();
-                    command2.Connection = dbconn;
-                    command2.CommandText = sqlStatement2;
-                    reader2 = command2.ExecuteReader();
-                    while (reader2.Read())
-                    {
-                        terem.Ertekelesek[reader2.GetInt32(0), reader2.GetInt32(1)] = reader2.GetInt32(2);
-                    }
-                    Konferencia konferencia = new Konferencia(id, cim, terem);
-
+                    Eloadoterem terem = new Eloadoterem(reader.GetInt32(2), reader.GetInt32(3));
+                    Konferencia konferencia = new Konferencia(reader.GetInt32(0), reader.GetString(1), terem);
+                    konferenciak.Add(konferencia);
                 }
-
-
                 dbconn.Close();
+                GetVotesForKonferencia();
             }
             catch (Exception e)
             {
 
                 Console.WriteLine(e.Message);
             }
-
-
             return konferenciak;
+        }
+
+        private void GetVotesForKonferencia()
+        {
+            try
+            {
+                dbconn.Open();
+
+                foreach (var item in konferenciak)
+                {
+                    //Console.WriteLine("ID: "+item.Eloadas_id_);
+                    sqlStatement = $"SELECT sor, szek, ertekeles FROM ertekelesek " +
+                        $"WHERE eloadasid = {item.Eloadas_id_} ORDER BY sor, szek;";
+                    command = new MySqlCommand();
+                    command.Connection = dbconn;
+                    command.CommandText = sqlStatement;
+                   // Console.WriteLine("->"+item.Eloadoterem_.Sor_ + " "+item.Eloadoterem_.Hely_);
+                    reader = command.ExecuteReader();
+                    while (reader.Read()) 
+                    {
+                        int sor = reader.GetInt32(0) - 1;
+                        int hely = reader.GetInt32(1) - 1;
+                        
+                        //Console.WriteLine(sor + " " +hely);
+                        item.Eloadoterem_.Ertekelesek[sor, hely] = reader.GetInt32(2);
+                    }
+                    reader.Close();
+                    command.Dispose();
+                }
+
+                dbconn.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

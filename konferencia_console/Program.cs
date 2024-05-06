@@ -13,6 +13,10 @@ namespace konferencia_console
             List<Konferencia> konferenciak = new List<Konferencia>();
             ConnectToDatabase connectToDatabase = new ConnectToDatabase();
             konferenciak = connectToDatabase.SelectKonferenciak();
+            foreach (var item in konferenciak)
+            {
+                Console.WriteLine(item.Eloadascime_ + "\n" + item.Eloadoterem_);
+            }
 
             Console.ReadKey();
         }

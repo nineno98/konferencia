@@ -14,9 +14,13 @@ namespace konferencia_console
 
         public Konferencia(int id, string eloadascime_, Eloadoterem eloadoterem_)
         {
-            this.eloadas_id_ = id;
-            this.eloadascime_ = eloadascime_;
-            this.eloadoterem_ = eloadoterem_;
+            this.Eloadas_id_ = id;
+            this.Eloadascime_ = eloadascime_;
+            this.Eloadoterem_ = eloadoterem_;
         }
+
+        public int Eloadas_id_ { get => eloadas_id_; set => eloadas_id_ = value; }
+        public string Eloadascime_ { get => eloadascime_; set => eloadascime_ = value; }
+        internal Eloadoterem Eloadoterem_ { get => eloadoterem_; set => eloadoterem_ = value; }
     }
 }
