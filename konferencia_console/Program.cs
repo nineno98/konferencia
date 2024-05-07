@@ -16,8 +16,9 @@ namespace konferencia_console
             foreach (var item in konferenciak)
             {
                 Console.WriteLine(item.Eloadascime_ + "\n" + item.Eloadoterem_);
+                Console.WriteLine("Átlagos értékelés: "+item.Eloadoterem_.Avg_);
             }
-
+            
 
             Console.ReadKey();
         }

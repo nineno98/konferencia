@@ -23,7 +23,9 @@ namespace konferencia_console
         public int Sor_ { get => sor_; set => sor_ = value; }
         public int Hely_ { get => hely_; set => hely_ = value; }
 
-        public double getAvg()
+        public double Avg_ { get => getAvg(); }
+
+        private double getAvg()
         {
             double avg = 0;
             int counter = 0;
@@ -36,7 +38,8 @@ namespace konferencia_console
                 }
             }
             avg = avg / counter;
-            return avg;
+            
+            return Math.Round(avg,2);
         }
 
         public override string ToString()
