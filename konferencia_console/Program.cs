@@ -18,6 +18,7 @@ namespace konferencia_console
                 Console.WriteLine(item.Eloadascime_ + "\n" + item.Eloadoterem_);
             }
 
+
             Console.ReadKey();
         }
     }

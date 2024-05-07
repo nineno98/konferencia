@@ -23,6 +23,22 @@ namespace konferencia_console
         public int Sor_ { get => sor_; set => sor_ = value; }
         public int Hely_ { get => hely_; set => hely_ = value; }
 
+        public double getAvg()
+        {
+            double avg = 0;
+            int counter = 0;
+            for (int i = 0; i < ertekelesek_.GetLength(0); i++)
+            {
+                for (int j = 0; j < ertekelesek_.GetLength(1); j++)
+                {
+                    avg += ertekelesek_[i, j];
+                    counter++;
+                }
+            }
+            avg = avg / counter;
+            return avg;
+        }
+
         public override string ToString()
         {
             string result = "";
