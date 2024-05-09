@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace konferencia_GUI
 {
@@ -26,6 +27,15 @@ namespace konferencia_GUI
         public int GetErtekeles(int sor, int hely)
         {
             return Ertekelesek[sor, hely];
+        }
+        public void SetErtekeles(int sor, int hely)
+        {
+            int value = Ertekelesek[sor, hely];
+            if (value < 3)
+                value++;
+            else
+                value = 0;
+            Ertekelesek[sor, hely] = value;
         }
 
         public double Avg_ { get => getAvg(); }

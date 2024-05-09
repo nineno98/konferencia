@@ -28,40 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.jobbnyil = new System.Windows.Forms.Button();
+            this.ballnyil = new System.Windows.Forms.Button();
+            this.mentes = new System.Windows.Forms.Button();
             this.pictureBoxKolto = new System.Windows.Forms.PictureBox();
             this.panelErtekeles = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKolto)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // jobbnyil
             // 
-            this.button1.Location = new System.Drawing.Point(169, 215);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 46);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.jobbnyil.BackgroundImage = global::konferencia_GUI.Properties.Resources.jobb;
+            this.jobbnyil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.jobbnyil.Location = new System.Drawing.Point(161, 218);
+            this.jobbnyil.Name = "jobbnyil";
+            this.jobbnyil.Size = new System.Drawing.Size(75, 70);
+            this.jobbnyil.TabIndex = 1;
+            this.jobbnyil.UseVisualStyleBackColor = true;
+            this.jobbnyil.Click += new System.EventHandler(this.jobbnyil_Click);
             // 
-            // button2
+            // ballnyil
             // 
-            this.button2.Location = new System.Drawing.Point(33, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 42);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ballnyil.BackgroundImage = global::konferencia_GUI.Properties.Resources.bal;
+            this.ballnyil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ballnyil.Location = new System.Drawing.Point(33, 218);
+            this.ballnyil.Name = "ballnyil";
+            this.ballnyil.Size = new System.Drawing.Size(74, 70);
+            this.ballnyil.TabIndex = 2;
+            this.ballnyil.UseVisualStyleBackColor = true;
+            this.ballnyil.Click += new System.EventHandler(this.ballnyil_Click);
             // 
-            // button3
+            // mentes
             // 
-            this.button3.Location = new System.Drawing.Point(113, 286);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 57);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.mentes.BackgroundImage = global::konferencia_GUI.Properties.Resources.ment;
+            this.mentes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.mentes.Location = new System.Drawing.Point(104, 318);
+            this.mentes.Name = "mentes";
+            this.mentes.Size = new System.Drawing.Size(65, 64);
+            this.mentes.TabIndex = 3;
+            this.mentes.UseVisualStyleBackColor = true;
+            this.mentes.Click += new System.EventHandler(this.mentes_Click);
             // 
             // pictureBoxKolto
             // 
@@ -85,9 +91,9 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelErtekeles);
             this.Controls.Add(this.pictureBoxKolto);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.mentes);
+            this.Controls.Add(this.ballnyil);
+            this.Controls.Add(this.jobbnyil);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -97,9 +103,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button jobbnyil;
+        private System.Windows.Forms.Button ballnyil;
+        private System.Windows.Forms.Button mentes;
         private System.Windows.Forms.PictureBox pictureBoxKolto;
         private System.Windows.Forms.Panel panelErtekeles;
     }
