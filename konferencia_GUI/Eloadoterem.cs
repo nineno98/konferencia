@@ -23,6 +23,11 @@ namespace konferencia_GUI
         public int Sor_ { get => sor_; set => sor_ = value; }
         public int Hely_ { get => hely_; set => hely_ = value; }
 
+        public int GetErtekeles(int sor, int hely)
+        {
+            return Ertekelesek[sor, hely];
+        }
+
         public double Avg_ { get => getAvg(); }
 
         private double getAvg()

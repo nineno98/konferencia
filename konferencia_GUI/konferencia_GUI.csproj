@@ -128,7 +128,7 @@
     <Content Include="kepek\Móricz.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="kepek\Petïfi.jpg">
+    <Content Include="kepek\Petőfi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="kepek\Pont0.jpg">
